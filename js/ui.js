@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 const renderContacts = (data, id) => {
     const html = `
     <li class="contact collection-item avatar" data-id=${id}>
@@ -22,7 +21,7 @@ const renderContacts = (data, id) => {
         Phone:<span class="phone">${data.phone}</span>
         <div class="secondary-content" data-id=${id}>
             <i class="material-icons modal-trigger" href="#update_contact_modal">edit</i>
-            <i class="material-icons">${data.favorite ? 'star' : 'star_border'}</i>
+            <i class="material-icons favorite-icon">${data.favorite ? 'star' : 'star_border'}</i>
             <i class="material-icons">delete_outline</i>
         </div>
     </li>
@@ -38,12 +37,9 @@ const removeContact = (id) => {
 
 const updateContact = (data, id) => {
     const contact = document.querySelector(`.contact[data-id=${id}`)
-    contact.querySelector('.name').innerHTML = data.name;
-    contact.querySelector('.phone').innerHTML = data.phone;
-    console.log(contact.querySelector('.material-icons')[1].textContent)
-    contact.querySelector('.material-icons')[1].textContent = data.favorite ? 'star' : 'star_border';
+    contact.querySelector('.name').innerHTML = data.name
+    contact.querySelector('.phone').innerHTML = data.phone
+    console.log(contact.querySelector('.name').innerHTML)
+    console.log(contact.querySelector('.phone').innerHTML)
+    contact.querySelector('.favorite-icon').textContent = data.favorite ? 'star' : 'star_border';
 }
-
-
-
-

@@ -56,7 +56,14 @@ db.collection('contacts').onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
         
         if (change.type === 'added') {
-            renderContacts(change.doc.data(), change.doc.id);
+            if ( window.location.pathname == '/' || window.location.pathname == '/index.html' ) {
+                renderContacts(change.doc.data(), change.doc.id);
+            }
+            if ( window.location.pathname == '/pages/favorites.html' ) {
+                if (change.doc.data().favorite) {
+                    renderContacts(change.doc.data(), change.doc.id);
+                }
+            }
         }
         if (change.type === 'removed') {
             removeContact(change.doc.id);
@@ -73,7 +80,7 @@ const contactContainer = document.querySelector('.contacts')
 
 contactContainer.addEventListener('click', e => {
 
-    console.log('e.target.textContent', e.target.textContent)
+    // console.log('e.target.textContent', e.target.textContent)
 
     if (e.target.textContent === 'delete_outline') {
         const id =  e.target.parentElement.getAttribute('data-id')
@@ -92,12 +99,12 @@ contactContainer.addEventListener('click', e => {
 
     if (e.target.textContent === 'star_border') {
         const id =  e.target.parentElement.getAttribute('data-id')
-        contact = {favorite:true}
+        contact = {favorite: true }
         db.collection('contacts').doc(id).update(contact)
     }
     if (e.target.textContent === 'star') {
         const id =  e.target.parentElement.getAttribute('data-id')
-        contact = {favorite:false}
+        contact = {favorite: false }
         db.collection('contacts').doc(id).update(contact)
     }
 })
