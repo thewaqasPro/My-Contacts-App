@@ -3,6 +3,13 @@
     margin: 0 auto;
 }
 
+@media only screen and (min-width: 993px) {
+    /* For desktop: */
+    .bottom-bar {
+        display: none;
+    }
+  }
+
 .bottom-bar {
     position: fixed;
     right: 0;
