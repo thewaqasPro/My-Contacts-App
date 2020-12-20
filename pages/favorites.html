@@ -56,10 +56,12 @@
     <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
   
     <li><div class="divider"></div></li>
-    <li><a href="/">Home</a></li>
-    <li><a href="/pages/favorites.html">Favorites</a></li>
-    <li><a href="/pages/about.html">About</a></li>
+    <li><a href="/"><i class="material-icons">contacts</i>Home</a></li>
+    <li><a href="/pages/favorites.html"><i class="material-icons">favorite</i>Favorites</a></li>
+    <li><a href="/pages/about.html"><i class="material-icons">info</i>About</a></li>
   </ul>
+
+  
 
   <div class="container" style="width: 100%;">
     <ul class="contacts collection with-header">
@@ -72,11 +74,7 @@
   </div>
     
 
-  <div class="fixed-action-btn">
-    <a href="#add_contact_modal" class="btn-floating btn-large modal-trigger">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
+  
 
   <!-- Modal Structure -->
   <div id="add_contact_modal" class="modal add-contact">
@@ -108,7 +106,14 @@
     </div>
   </div>
 
-
+  <div class="bottom-bar">
+    <ul>
+       <li class="waves-effect waves-light"><a href="/"><i class="material-icons">contacts</i></a></li>
+       <li class="waves-effect waves-light"><a href="/pages/favorites.html"><i class="material-icons">favorite</i></a></li>
+       <li class="waves-effect waves-light"><a href="/pages/about.html"><i class="material-icons">info</i></a></li>
+       <li class="waves-effect waves-light"><a class="modal-trigger" href="/index.html#add_contact_modal"><i class="material-icons">attachment</i></a></li>
+     </ul>
+   </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
