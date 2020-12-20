@@ -1,12 +1,11 @@
-$(document).ready(function () {
-    $(".button-collapse").sideNav();
+document.addEventListener('DOMContentLoaded', function () {
+
+    var sidenav = document.querySelectorAll('.sidenav');
+    var modals = document.querySelectorAll('.modal');
+    var fab = document.querySelectorAll('.fixed-action-btn');
+
+    M.FloatingActionButton.init(fab);
+    M.Sidenav.init(sidenav);
+    M.Modal.init(modals);
+    
 });
-
-$(document).ready(function(){
-    $('.modal').modal();
-});
-
-// $(document).ready(function(){
-//     $('.fixed-action-btn').floatingActionButton();
-// });
-

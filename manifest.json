@@ -1,46 +1,46 @@
 {
-    "short_name": "MyContact",
-    "name": "My Contact",
-    "description": "My Contact contain the information about differnt companies.",
-    "icons": [
-      {
-        "src": "/images/icons/appstore.png",
-        "type": "image/png",
-        "sizes": "1024x1024"
-      },{
-        "src": "/images/icons/playstore.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      },{
-        "src": "/images/icons/icon-192.png",
-        "type": "image/png",
-        "sizes": "192x192",
-        "purpose": "any maskable"
-      },
-      {
-        "src": "/images/icons/icon-144.png",
-        "type": "image/png",
-        "sizes": "144x144"
-      },
-      {
-        "src": "/images/icons/icon-96.png",
-        "type": "image/png",
-        "sizes": "96x96"
-      },
-      {
-        "src": "/images/icons/icon-72.png",
-        "type": "image/png",
-        "sizes": "72x72"
-      },
-      {
-        "src": "/images/icons/icon-48.png",
-        "type": "image/png",
-        "sizes": "48x48"
-      }
-      
-    ],
-    "start_url": "/index.html",
-    "background_color": "#3b5998",
-    "display": "standalone",
-    "theme_color": "#3b5998"
-  }
+  "short_name": "MyContactApp",
+  "name": "My Contact App",
+  "description": "My Contact contain the information about differnt companies.",
+  "icons": [
+    {
+      "src": "/images/icons/appstore.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },{
+      "src": "/images/icons/playstore.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },{
+      "src": "/images/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/images/icons/icon-96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/images/icons/icon-72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/images/icons/icon-48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    }
+    
+  ],
+  "start_url": "./",
+  "background_color": "#3b5998",
+  "display": "standalone",
+  "theme_color": "#3b5998"
+}
