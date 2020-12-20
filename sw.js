@@ -9,9 +9,8 @@ const assets = [
     '/images/office.jpg',
     '/js/app.js',
     '/js/ui.js',
-    '/venders/jquery/jquery.min.js',
-    '/venders/materialize/js/materialize.min.js',
-    '/css/materialize.css',
+    '/js/materialize.min.js',
+    '/css/materialize.min.css',
     '/css/styles.css',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     '/pages/fallback.html'
@@ -41,16 +40,16 @@ self.addEventListener('activate', e => {
     console.log('avtivate')
 })
 
-self.addEventListener('fetch', e => {
-    e.respondWith(
-        caches.match(e.request).then(staticRes => {
-            return staticRes || fetch(e.request).then(dynamicRes => {
-                return caches.open(dynamicCache).then(cache => {
-                    cache.put(e.request.url, dynamicRes.clone())
-                    limitNumCache(dynamicCache, 3)
-                    return dynamicRes
-                })
-            })
-        }).catch( ()=>caches.match('/pages/fallback.html'))
-    )
-})
+// self.addEventListener('fetch', e => {
+//     e.respondWith(
+//         caches.match(e.request).then(staticRes => {
+//             return staticRes || fetch(e.request).then(dynamicRes => {
+//                 return caches.open(dynamicCache).then(cache => {
+//                     cache.put(e.request.url, dynamicRes.clone())
+//                     limitNumCache(dynamicCache, 3)
+//                     return dynamicRes
+//                 })
+//             })
+//         }).catch( ()=>caches.match('/pages/fallback.html'))
+//     )
+// })

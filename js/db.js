@@ -20,3 +20,19 @@ contactForm.addEventListener('submit', event => {
         contactForm.querySelector('.error').textContent = err.message
     })
 })
+
+
+
+
+db.collection('contacts').onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+            // console.log(`${change.doc.data().name} is added`)
+            renderContacts(change.doc.data(), change.doc.id);
+        }
+        if (change.type === 'removed') {
+            // console.log(`${change.doc.data().name} is removed`)
+            renderContacts(change.doc.data(), change.doc.id);
+        }
+    })
+})
