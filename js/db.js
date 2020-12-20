@@ -54,11 +54,15 @@ updateContactForm.addEventListener('submit', event => {
 
 db.collection('contacts').onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
+        
         if (change.type === 'added') {
             renderContacts(change.doc.data(), change.doc.id);
         }
         if (change.type === 'removed') {
-            removeContact(change.doc.data(), change.doc.id);
+            removeContact(change.doc.id);
+        }
+        if (change.type === 'modified') {
+            updateContact(change.doc.data(), change.doc.id);
         }
     })
 })
@@ -68,20 +72,32 @@ db.collection('contacts').onSnapshot(snapshot => {
 const contactContainer = document.querySelector('.contacts')   
 
 contactContainer.addEventListener('click', e => {
-    
+
+    console.log('e.target.textContent', e.target.textContent)
+
     if (e.target.textContent === 'delete_outline') {
         const id =  e.target.parentElement.getAttribute('data-id')
         db.collection('contacts').doc(id).delete()
     }
 
     if (e.target.textContent === 'edit') {
-        const updateId =  e.target.parentElement.getAttribute('data-id')
+        updateId =  e.target.parentElement.getAttribute('data-id')
         const contact = document.querySelector(`.contact[data-id=${updateId}`)
         const name = contact.querySelector('.name').innerHTML 
         const phone = contact.querySelector('.phone').innerHTML 
         updateContactForm.name.value = name;
         updateContactForm.phone.value = phone;
         console.log(name, phone)
-        // db.collection('contacts').doc(id).delete()
+    }
+
+    if (e.target.textContent === 'star_border') {
+        const id =  e.target.parentElement.getAttribute('data-id')
+        contact = {favorite:true}
+        db.collection('contacts').doc(id).update(contact)
+    }
+    if (e.target.textContent === 'star') {
+        const id =  e.target.parentElement.getAttribute('data-id')
+        contact = {favorite:false}
+        db.collection('contacts').doc(id).update(contact)
     }
 })

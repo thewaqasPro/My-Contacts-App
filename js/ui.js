@@ -36,3 +36,14 @@ const removeContact = (id) => {
 }
 
 
+const updateContact = (data, id) => {
+    const contact = document.querySelector(`.contact[data-id=${id}`)
+    contact.querySelector('.name').innerHTML = data.name;
+    contact.querySelector('.phone').innerHTML = data.phone;
+    console.log(contact.querySelector('.material-icons')[1].textContent)
+    contact.querySelector('.material-icons')[1].textContent = data.favorite ? 'star' : 'star_border';
+}
+
+
+
+
