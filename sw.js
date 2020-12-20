@@ -41,15 +41,17 @@ self.addEventListener('activate', e => {
 })
 
 self.addEventListener('fetch', e => {
-    e.respondWith(
-        caches.match(e.request).then(staticRes => {
-            return staticRes || fetch(e.request).then(dynamicRes => {
-                return caches.open(dynamicCache).then(cache => {
-                    cache.put(e.request.url, dynamicRes.clone())
-                    limitNumCache(dynamicCache, 3)
-                    return dynamicRes
+    if (e.request.url.indexOf('firestore.googleapis.com') === -1) {
+        e.respondWith(
+            caches.match(e.request).then(staticRes => {
+                return staticRes || fetch(e.request).then(dynamicRes => {
+                    return caches.open(dynamicCache).then(cache => {
+                        cache.put(e.request.url, dynamicRes.clone())
+                        limitNumCache(dynamicCache, 3)
+                        return dynamicRes
+                    })
                 })
-            })
-        }).catch( ()=>caches.match('/pages/fallback.html'))
-    )
+            }).catch( ()=>caches.match('/pages/fallback.html'))
+        )
+    }
 })

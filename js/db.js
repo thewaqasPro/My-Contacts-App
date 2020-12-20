@@ -1,23 +1,51 @@
-const contactForm = document.querySelector('.add-contact form')
+db.enablePersistence().catch(()=>{
+    if (err.code == 'failed-precondition') {
+        console.log('Multiple tabs opened')
+    } else if (err.code == 'unimplemented') {
+        console.log('Browser Not Support')
+    }
+})
+
+const addContactForm = document.querySelector('.add-contact form')
+const updateContactForm = document.querySelector('.update-contact form')
 
 const addContactModal = document.querySelector('#add_contact_model')
 const updateContactModal = document.querySelector('#update_contact_model')
 
-contactForm.addEventListener('submit', event => {
+let updateId = null
+
+addContactForm.addEventListener('submit', event => {
     event.preventDefault();
 
     const contact = {
-        name:contactForm.name.value,
-        phone:contactForm.phone.value,
+        name:addContactForm.name.value,
+        phone:addContactForm.phone.value,
         favorite:false
     }
     db.collection('contacts').add(contact).then(()=>{
-        contactForm.reset();
+        addContactForm.reset();
         var instance = M.Modal.getInstance(addContactModal);
         instance.close();
-        contactForm.querySelector('.error').textContent = ''
+        addContactForm.querySelector('.error').textContent = ''
     }).catch(err=>{
-        contactForm.querySelector('.error').textContent = err.message
+        addContactForm.querySelector('.error').textContent = err.message
+    })
+})
+
+updateContactForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const contact = {
+        name:updateContactForm.name.value,
+        phone:updateContactForm.phone.value,
+    }
+    db.collection('contacts').doc(updateId).update(contact).then(()=>{
+        updateContactForm.reset();
+        var instance = M.Modal.getInstance(updateContactModal);
+        instance.close();
+        updateContactForm.querySelector('.error').textContent = ''
+    }).catch(err=>{
+        updateContactForm.querySelector('.error').textContent = err.message
     })
 })
 
@@ -27,12 +55,33 @@ contactForm.addEventListener('submit', event => {
 db.collection('contacts').onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
         if (change.type === 'added') {
-            // console.log(`${change.doc.data().name} is added`)
             renderContacts(change.doc.data(), change.doc.id);
         }
         if (change.type === 'removed') {
-            // console.log(`${change.doc.data().name} is removed`)
-            renderContacts(change.doc.data(), change.doc.id);
+            removeContact(change.doc.data(), change.doc.id);
         }
     })
+})
+
+
+
+const contactContainer = document.querySelector('.contacts')   
+
+contactContainer.addEventListener('click', e => {
+    
+    if (e.target.textContent === 'delete_outline') {
+        const id =  e.target.parentElement.getAttribute('data-id')
+        db.collection('contacts').doc(id).delete()
+    }
+
+    if (e.target.textContent === 'edit') {
+        const updateId =  e.target.parentElement.getAttribute('data-id')
+        const contact = document.querySelector(`.contact[data-id=${updateId}`)
+        const name = contact.querySelector('.name').innerHTML 
+        const phone = contact.querySelector('.phone').innerHTML 
+        updateContactForm.name.value = name;
+        updateContactForm.phone.value = phone;
+        console.log(name, phone)
+        // db.collection('contacts').doc(id).delete()
+    }
 })

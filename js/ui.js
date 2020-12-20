@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const renderContacts = (data, id) => {
     const html = `
-    <li class="collection-item avatar" data-id="${id}">
+    <li class="contact collection-item avatar" data-id=${id}>
         <i class="material-icons circle blue">account_box</i>
         Name: <span class="name">${data.name}</span><br>
         Phone:<span class="phone">${data.phone}</span>
-        <div class="secondary-content" data-id="${id}">
-            <i class="material-icons modal-trigger" href="#update_conatct_modal">edit</i>
+        <div class="secondary-content" data-id=${id}>
+            <i class="material-icons modal-trigger" href="#update_contact_modal">edit</i>
             <i class="material-icons">${data.favorite ? 'star' : 'star_border'}</i>
             <i class="material-icons">delete_outline</i>
         </div>
@@ -29,3 +29,10 @@ const renderContacts = (data, id) => {
     `
     contacts.innerHTML += html
 }
+
+const removeContact = (id) => {
+    const contact = document.querySelector(`.contact[data-id=${id}`)
+    contact.remove();
+}
+
+
