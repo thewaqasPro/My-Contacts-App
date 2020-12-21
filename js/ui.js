@@ -5,12 +5,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var sidenav = document.querySelectorAll('.sidenav');
     var modals = document.querySelectorAll('.modal');
     var fab = document.querySelectorAll('.fixed-action-btn');
-
+    var select = document.querySelectorAll('select');
+    var autocomplete = document.querySelectorAll('.autocomplete');
+    var datepicker = document.querySelectorAll('.datepicker');
+    
     M.FloatingActionButton.init(fab);
     M.Sidenav.init(sidenav);
     M.Modal.init(modals);
+    M.FormSelect.init(select);
+    var autocompleteInstances = M.Autocomplete.init(autocomplete);
+    M.Datepicker.init(datepicker);
+           
 
 });
+
 
 
 const renderContacts = (data, id) => {

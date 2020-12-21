@@ -6,7 +6,6 @@ const assets = [
     '/index.html',
     '/images/favicon.ico',
     '/images/logo.png',
-    '/images/office.jpg',
     '/js/app.js',
     '/js/ui.js',
     '/js/materialize.min.js',

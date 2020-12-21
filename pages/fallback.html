@@ -32,7 +32,7 @@
 
   <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Contact App</a>
+      <a href="/" class="brand-logo">404</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
@@ -44,9 +44,7 @@
 
   <ul class="sidenav" id="mobile-demo">
     <li><div class="user-view">
-      <div class="background">
-        <img width="300px" height="160px" src="../images/office.jpg" alt="office">
-      </div>
+      <div class="background" style="background-color: #163b6d;"></div>
         <a href="/"><img width="64px" height="64px" class="circle" src="../images/logo.png" alt="Logo"></a>
         <a href="#name"><span class="white-text name">Muhammad Waqas</span></a>
         <a href="#email"><span class="white-text email">thewaqaspro@gmail.com</span></a>
@@ -66,8 +64,8 @@
         <div class="col m12 s12 center-align">
             <h1>Sorry!</h1> 
             <p>Their is no connection at this moment.</p>
-            <p>Please check you internet connection.</p>
-            <a class="waves-effect waves-light btn modal-trigger" href="/">Back to Home Page</a>
+            <p>Please check you internet connection.</p><br>
+            <a class="waves-effect waves-light btn btn-large modal-trigger" href="/">Back to Home Page</a>
         </div>
        
     </div>
@@ -75,14 +73,30 @@
     
 
 
-<div class="bottom-bar">
-  <ul>
-     <li class="waves-effect waves-light"><a href="/"><i class="material-icons">contacts</i></a></li>
-     <li class="waves-effect waves-light"><a href="/pages/favorites.html"><i class="material-icons">favorite</i></a></li>
-     <li class="waves-effect waves-light"><a href="/pages/about.html"><i class="material-icons">info</i></a></li>
-     <li class="waves-effect waves-light"><a class="modal-trigger" href="/index.html#add_contact_modal"><i class="material-icons">attachment</i></a></li>
-   </ul>
- </div>
+  <!-- Modal Structure -->
+  <div id="add_contact_modal" class="modal add-contact" style="width: 96%;">
+    <div class="modal-content">
+      <h4>Insert New Contact</h4>
+      <form action="">
+        <input type="text" name="name" id="" placeholder="Company Name">
+        <input type="number" name="phone" id="" placeholder="Phone Number">
+        <p class="error"></p>
+        <div class="modal-footer">
+          <button class="modal-close waves-effect waves-green btn">Add Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <ul>
+      <li><a class="waves-effect waves-light" href="/"><i class="material-icons">home</i><span>Home</span></a></li>
+      <li><a class="waves-effect waves-light" href="/pages/favorites.html"><i class="material-icons">star</i><span>Favorites</span></a></li>
+      <li class="fixed-insert-btn"><a class="btn-large waves-effect waves-light modal-trigger" href="#add_contact_modal"><i class="large material-icons">add</i></a></li>
+      <li><a class="waves-effect waves-light" href="/pages/about.html"><i class="material-icons">info</i><span>About</span></a></li>
+      <li><a class="waves-effect waves-light"  href="/pages/settings.html"><i class="material-icons">settings</i><span>Settings</span></a></li>
+    </ul>
+  </div>
 
 
 

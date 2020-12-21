@@ -32,7 +32,7 @@
 
   <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Contact App</a>
+      <a href="/" class="brand-logo">Contacts App</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
@@ -44,9 +44,7 @@
 
   <ul class="sidenav" id="mobile-demo">
     <li><div class="user-view">
-      <div class="background">
-        <img width="300px" height="160px" src="images/office.jpg" alt="office">
-      </div>
+      <div class="background" style="background-color: #163b6d;"></div>
         <a href="/"><img width="64px" height="64px" class="circle" src="images/logo.png" alt="Logo"></a>
         <a href="#name"><span class="white-text name">Muhammad Waqas</span></a>
         <a href="#email"><span class="white-text email">thewaqaspro@gmail.com</span></a>
@@ -65,20 +63,13 @@
 
   <div class="container" style="width: 100%;">
     <ul class="contacts collection with-header">
-      <li class="collection-header center-align">
-        <h4>Contacts</h4>
-      </li>
 
         
     </ul>
+    <br><br><br>
   </div>
     
 
-  <div class="fixed-action-btn">
-    <a href="#add_contact_modal" class="btn-floating btn-large modal-trigger">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
 
   <!-- Modal Structure -->
   <div id="add_contact_modal" class="modal add-contact" style="width: 96%;">
@@ -111,13 +102,14 @@
   </div>
 
   <div class="bottom-bar">
-   <ul>
-      <li class="waves-effect waves-light"><a href="/"><i class="material-icons">contacts</i></a></li>
-      <li class="waves-effect waves-light"><a href="/pages/favorites.html"><i class="material-icons">favorite</i></a></li>
-      <li class="waves-effect waves-light"><a href="/pages/about.html"><i class="material-icons">info</i></a></li>
-      <li class="waves-effect waves-light"><a class="modal-trigger" href="#add_contact_modal"><i class="material-icons"></i></a></li>
-    </ul>
-  </div>
+    <ul>
+       <li><a class="waves-effect waves-light" href="/"><i class="material-icons">home</i><span>Home</span></a></li>
+       <li><a class="waves-effect waves-light" href="/pages/favorites.html"><i class="material-icons">star</i><span>Favorites</span></a></li>
+       <li class="fixed-insert-btn"><a class="btn-large waves-effect waves-light modal-trigger" href="#add_contact_modal"><i class="large material-icons">add</i></a></li>
+       <li><a class="waves-effect waves-light" href="/pages/about.html"><i class="material-icons">info</i><span>About</span></a></li>
+       <li><a class="waves-effect waves-light"  href="/pages/settings.html"><i class="material-icons">settings</i><span>Settings</span></a></li>
+     </ul>
+   </div>
 
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
