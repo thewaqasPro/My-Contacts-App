@@ -6,18 +6,50 @@ document.addEventListener('DOMContentLoaded', function () {
     var modals = document.querySelectorAll('.modal');
     var fab = document.querySelectorAll('.fixed-action-btn');
     var select = document.querySelectorAll('select');
-    var autocomplete = document.querySelectorAll('.autocomplete');
-    var datepicker = document.querySelectorAll('.datepicker');
     
     M.FloatingActionButton.init(fab);
     M.Sidenav.init(sidenav);
     M.Modal.init(modals);
+
     M.FormSelect.init(select);
-    var autocompleteInstances = M.Autocomplete.init(autocomplete);
-    M.Datepicker.init(datepicker);
-           
 
 });
+
+
+const autocompleteField = document.querySelector("#autocomplete");
+const autocompleteInstance = M.Autocomplete.init(autocompleteField, {
+    minLength: 1,
+    limit: 5,
+});
+const fetchedResults = document.querySelector('#fetchedResults');
+const insertLi = (text) => {
+    fetchedResults.innerHTML = `${fetchedResults.innerHTML}<li class="collection-item">${text}</li>`;
+};
+autocompleteField.addEventListener('focus', () => {
+    fetch('https://firestore.googleapis.com/v1/projects/contact-71b85/databases/(default)/documents/contacts/')
+    .then(response => response.ok ? response.json() : new Error(response.statusText))
+    .then(json => {
+
+        const data = [];
+        json.documents.forEach(item => {
+            data[item.fields.name.stringValue] = null;
+            insertLi(item.fields.name.stringValue);
+        });
+    
+        autocompleteInstance.updateData(data);
+        autocompleteInstance.open();
+
+    }).catch(error => {
+        autocompleteInstance.updateData({
+            'Unable to connect': null
+        });
+    })
+    
+}, {
+    once: true
+});
+
+
 
 
 

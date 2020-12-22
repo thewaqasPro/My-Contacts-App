@@ -32,7 +32,7 @@
 
   <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">About</a>
+      <a href="/" class="brand-logo">Search</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
@@ -59,28 +59,63 @@
     <li><a href="/pages/about.html"><i class="material-icons">info</i>About</a></li>
   </ul>
 
-  <div class="container">
-      
+  <div class="container"> 
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam veniam vero quam repudiandae rem nisi sint quo consectetur, sed impedit corrupti minima illo odio, libero doloribus quas quae eius.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam veniam vero quam repudiandae rem nisi sint quo consectetur, sed impedit corrupti minima illo odio, libero doloribus quas quae eius.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam veniam vero quam repudiandae rem nisi sint quo consectetur, sed impedit corrupti minima illo odio, libero doloribus quas quae eius.</p>
-  
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam veniam vero quam repudiandae rem nisi sint quo consectetur, sed impedit corrupti minima illo odio, libero doloribus quas quae eius.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam veniam vero quam repudiandae rem nisi sint quo consectetur, sed impedit corrupti minima illo odio, libero doloribus quas quae eius.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ullam veniam vero quam repudiandae rem nisi sint quo consectetur, sed impedit corrupti minima illo odio, libero doloribus quas quae eius.</p>
+    <!-- <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="country">Autocomplete</label>
+            <input type="text" id="country" class="autocomplete">
+    
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="autocomplete" class="autocomplete">
+            <label for="autocomplete">Dynamic Autocomplete</label>
+          </div>
+          <div class="col s12">
+            <ul class="collection" id="fetchedResults"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+ 
   
 
   </div>
     
 
   <!-- Modal Structure -->
+  <div id="add_contact_modal" class="modal update-contact" style="width: 96%;">
+    <div class="modal-content">
+      <h4>Insert New Contact</h4>
+      <form action="">
+        <input type="text" name="name" placeholder="Company Name">
+        <input type="number" name="phone"  placeholder="Phone Number">
+        <p class="error"></p>
+        <div class="modal-footer">
+          <button class="modal-close waves-effect waves-green btn">Add Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
   <div id="add_contact_modal" class="modal add-contact" style="width: 96%;">
     <div class="modal-content">
       <h4>Insert New Contact</h4>
       <form action="">
-        <input type="text" name="name" id="" placeholder="Company Name">
-        <input type="number" name="phone" id="" placeholder="Phone Number">
+        <input type="text" name="name" placeholder="Company Name">
+        <input type="number" name="phone"  placeholder="Phone Number">
         <p class="error"></p>
         <div class="modal-footer">
           <button class="modal-close waves-effect waves-green btn">Add Record</button>
@@ -94,7 +129,7 @@
       <li><a class="waves-effect waves-light" href="/"><i class="material-icons">home</i><span>Home</span></a></li>
       <li><a class="waves-effect waves-light" href="/pages/favorites.html"><i class="material-icons">star</i><span>Favorites</span></a></li>
       <li class="fixed-insert-btn"><a class="btn-large waves-effect waves-light modal-trigger" href="#add_contact_modal"><i class="large material-icons">add</i></a></li>
-      <li><a class="waves-effect waves-light" href="/pages/about.html"><i class="material-icons">info</i><span>About</span></a></li>
+      <li><a class="waves-effect waves-light" href="/pages/about.html"><i class="material-icons">search</i><span>Search</span></a></li>
       <li><a class="waves-effect waves-light"  href="/pages/settings.html"><i class="material-icons">settings</i><span>Settings</span></a></li>
     </ul>
   </div>
@@ -125,10 +160,45 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="../js/materialize.min.js"></script>
+  
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" rel="stylesheet" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script> -->
+
 
   <script type="text/javascript" src="../js/app.js"></script>
   <script type="text/javascript" src="../js/db.js"></script>
   <script type="text/javascript" src="../js/ui.js"></script>
+
+  <script>
+  //   $(document).ready(function() {
+  //   //Autocomplete
+  //   $(function() {
+  //     $.ajax({
+  //       type: 'GET',
+  //       url: 'https://firestore.googleapis.com/v1/projects/contact-71b85/databases/(default)/documents/contacts/',
+  //       success: function(response) {
+  //         var data = response.documents;
+  //         var dataCountry = {};
+  //         for (var i = 0; i < data.length; i++) {
+  //           console.log(data[i].fields.name.stringValue);
+  //           dataCountry[data[i].fields.name.stringValue] = data[i].flag; //countryArray[i].flag or null
+
+  //         }
+  //         $('input.autocomplete').autocomplete({
+  //           data: dataCountry,
+  //           limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+  //         });
+  //       }
+  //     });
+  //   });
+  // });
+
+  
+
+  </script>
 
   </body>
 </html>
