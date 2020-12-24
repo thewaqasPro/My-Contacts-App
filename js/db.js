@@ -73,6 +73,7 @@ db.collection('contacts').onSnapshot(snapshot => {
         }
     })
 })
+
 const renderContacts = (data, id) => {
     const html = `
     <li class="contact collection-item avatar" data-id=${id}>
