@@ -25,6 +25,7 @@ const fetchedResults = document.querySelector('#fetchedResults');
 const insertLi = (text) => {
     fetchedResults.innerHTML = `${fetchedResults.innerHTML}<li class="collection-item">${text}</li>`;
 };
+
 autocompleteField.addEventListener('focus', () => {
     fetch('https://firestore.googleapis.com/v1/projects/contact-71b85/databases/(default)/documents/contacts/')
     .then(response => response.ok ? response.json() : new Error(response.statusText))
