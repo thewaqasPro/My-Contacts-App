@@ -69,13 +69,10 @@ const renderContacts = (data, id) => {
     contacts.innerHTML += html
 }
 
-
-
 const removeContact = (id) => {
     const contact = document.querySelector(`.contact[data-id=${id}`)
     contact.remove();
 }
-
 
 const updateContact = (data, id) => {
     const contact = document.querySelector(`.contact[data-id=${id}`)
