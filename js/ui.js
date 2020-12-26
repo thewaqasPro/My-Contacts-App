@@ -50,9 +50,6 @@ autocompleteField.addEventListener('focus', () => {
     once: true
 });
 
-
-
-
 const renderContacts = (data, id) => {
     const html = `
     <li class="contact collection-item avatar" data-id=${id}>
