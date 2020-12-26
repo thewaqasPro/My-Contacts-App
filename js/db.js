@@ -51,7 +51,6 @@ updateContactForm.addEventListener('submit', event => {
 
 
 
-
 db.collection('contacts').onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
         
@@ -73,7 +72,6 @@ db.collection('contacts').onSnapshot(snapshot => {
         }
     })
 })
-
 
 const contactContainer = document.querySelector('.contacts')   
 
