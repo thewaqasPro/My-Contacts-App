@@ -75,8 +75,6 @@ db.collection('contacts').onSnapshot(snapshot => {
 })
 
 
-
-
 const contactContainer = document.querySelector('.contacts')   
 
 contactContainer.addEventListener('click', e => {
