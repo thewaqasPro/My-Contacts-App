@@ -3,16 +3,16 @@ const dynamicCache = 'dynamic-cache';
 
 const assets = [
     '/',
-    // '/index.html',
-    // '/images/favicon.ico',
-    // '/images/logo.png',
-    // '/js/app.js',
-    // '/js/ui.js',
-    // '/js/materialize.min.js',
-    // '/css/materialize.min.css',
-    // '/css/styles.css',
-    // 'https://fonts.googleapis.com/icon?family=Material+Icons',
-    // '/pages/fallback.html'
+    '/index.html',
+    '/images/favicon.ico',
+    '/images/logo.png',
+    '/js/app.js',
+    '/js/ui.js',
+    '/js/materialize.min.js',
+    '/css/materialize.min.css',
+    '/css/styles.css',
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
+    '/pages/fallback.html'
 ]
 
 const limitNumCache = (cacheName, num) => {
